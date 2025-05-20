@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router";
+import logImg from "../assets/logo.png";
 
 const Navbar = () => {
   return (
@@ -37,7 +38,13 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Recipe Book App</a>
+          <div className="flex items-center ">
+            {" "}
+            <div className="md:w-15 w-10">
+              <img className="rounded-md w-full" src={logImg} alt="" />
+            </div>
+            <a className="btn btn-ghost text-xl md:text-2xl">Recipe Book App</a>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex ">
           <ul className="menu menu-horizontal px-1 gap-5">
