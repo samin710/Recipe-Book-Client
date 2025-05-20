@@ -14,8 +14,6 @@ const SignUp = () => {
     document.title = "Recipe Book App | signUp";
   }, []);
 
-  const from = location.state?.from || "/";
-
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -82,7 +80,7 @@ const SignUp = () => {
           .then(() => {
             toast.success("Successfully created account");
             setUser({ ...res.user, displayName: name, photoURL: photo });
-            navigate(from, { replace: true });
+            navigate(`${location.state ? location.state : "/"}`);
           })
           .catch((error) => {
             toast.error(error.message);
@@ -99,7 +97,7 @@ const SignUp = () => {
         const data = res.user.email;
         toast.success(`Successfully signin to ${data}`);
         setUser({ ...res.user });
-        navigate(from, { replace: true });
+        navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
         // toast.error(error.message);
