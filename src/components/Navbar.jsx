@@ -1,8 +1,26 @@
-import React from "react";
-import { NavLink } from "react-router";
+import React, { use } from "react";
+import { NavLink, useNavigate } from "react-router";
 import logImg from "../assets/logo.png";
+import { AuthContext } from "../providers/AuthContext";
+import { toast } from "react-toastify";
+import Loading from "./Loading";
 
 const Navbar = () => {
+  const { user, logout, loading } = use(AuthContext);
+  const navigate = useNavigate();
+
+  if (loading) return <Loading></Loading>;
+
+  const handleLogout = () => {
+    logout()
+      .then(() => {
+        toast.success("Successfully SignOut");
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error.massage);
+      });
+  };
   return (
     <>
       <div className="navbar bg-base-100 shadow-md shadow-secondary my-3 md:my-8">
@@ -99,29 +117,43 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <div className=" menu-horizontal gap-3">
-            <NavLink
-              className={({ isActive }) =>
-                isActive
-                  ? "bg-primary text-white font-medium btn"
-                  : "border-b-4 border-b-primary border-secondary  bg-white text-primary font-medium btn"
-              }
-              to={"/signIn"}
-            >
-              SignIn
-            </NavLink>
+          {user ? (
+            <div className="menu-horizontal gap-3">
+              <button
+                onClick={handleLogout}
+                className="border-b-4 border-b-primary border-secondary  bg-white text-primary font-medium btn"
+              >
+                SignOut
+              </button>
+              <NavLink>
+                <img className="w-10 rounded-full" src={user.photoURL} />
+              </NavLink>
+            </div>
+          ) : (
+            <div className=" menu-horizontal gap-3">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "bg-primary text-white font-medium btn"
+                    : "border-b-4 border-b-primary border-secondary  bg-white text-primary font-medium btn"
+                }
+                to={"/signIn"}
+              >
+                SignIn
+              </NavLink>
 
-            <NavLink
-              className={({ isActive }) =>
-                isActive
-                  ? "bg-primary text-white font-medium btn"
-                  : "border-b-4 border-b-primary border-secondary  bg-white text-primary font-medium btn"
-              }
-              to={"/signUp"}
-            >
-              SignUp
-            </NavLink>
-          </div>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "bg-primary text-white font-medium btn"
+                    : "border-b-4 border-b-primary border-secondary  bg-white text-primary font-medium btn"
+                }
+                to={"/signUp"}
+              >
+                SignUp
+              </NavLink>
+            </div>
+          )}
         </div>
       </div>
     </>

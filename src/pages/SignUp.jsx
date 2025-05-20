@@ -174,7 +174,6 @@ const SignUp = () => {
               <Link
                 className="text-primary"
                 to={"/signIn"}
-                state={{ from: location.state?.from }}
               >
                 SignIn
               </Link>

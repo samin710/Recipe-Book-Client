@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from "react";
 
 const Home = () => {
-    return (
-        <div>
-            home
-        </div>
-    );
+  useEffect(() => {
+    document.title = "Recipe Book App | Home";
+  }, []);
+
+  return <div>home</div>;
 };
 
 export default Home;

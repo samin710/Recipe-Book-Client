@@ -110,11 +110,7 @@ const SignIn = () => {
               </fieldset>
               <p className="font-semibold text-center pt-4">
                 Don't have an account?<span> </span>
-                <Link
-                  className="text-primary"
-                  to={"/signup"}
-                  state={{ from: location.state?.from }}
-                >
+                <Link className="text-primary" to={"/signUp"}>
                   SignUp
                 </Link>
               </p>
