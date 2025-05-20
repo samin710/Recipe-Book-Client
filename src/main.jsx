@@ -12,6 +12,7 @@ import SignIn from "./pages/SignIn";
 import AuthProvider from "./providers/AuthProvider";
 import { ToastContainer } from "react-toastify";
 import ErrorPage from "./pages/ErrorPage";
+import PrivateRoute from "./providers/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,11 @@ const router = createBrowserRouter([
       },
       {
         path: "addRecipe",
-        Component: AddRecipe,
+        element: (
+          <PrivateRoute>
+            <AddRecipe></AddRecipe>
+          </PrivateRoute>
+        ),
       },
       {
         path: "myRecipes",
