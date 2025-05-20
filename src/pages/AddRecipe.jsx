@@ -14,20 +14,18 @@ const AddRecipe = () => {
     userEmail,
     userPhoto,
   };
-  // console.log(userInfo);
 
   const handleAddRecipe = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const recipeData = Object.fromEntries(formData.entries());
-    // console.log(recipeData);
+
 
     const recipeDataWithUserInfo = {
       ...recipeData,
       ...userInfo,
     };
-    console.log(recipeDataWithUserInfo);
 
     fetch("http://localhost:3000/recipes", {
       method: "POST",
