@@ -11,6 +11,7 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import AuthProvider from "./providers/AuthProvider";
 import { ToastContainer } from "react-toastify";
+import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: "signIn",
     Component: SignIn,
+  },
+  {
+    path: "*",
+    Component: ErrorPage,
   },
 ]);
 
