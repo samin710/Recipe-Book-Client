@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../providers/AuthContext";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const location = useLocation();
@@ -17,10 +18,16 @@ const SignUp = () => {
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
-    const photo = form.photo.value;
-    const email = form.email.value;
-    const password = form.password.value;
+    const formData = new FormData(form);
+
+    const name = formData.get("name");
+    const photo = formData.get("photo");
+
+    const { email, password, ...rest } = Object.fromEntries(formData.entries());
+    const userProfile = {
+      email,
+      ...rest,
+    };
 
     const hasUpperCase = /[A-Z]/.test(password);
     const hasLowerCase = /[a-z]/.test(password);
@@ -81,6 +88,25 @@ const SignUp = () => {
             toast.success("Successfully created account");
             setUser({ ...res.user, displayName: name, photoURL: photo });
             navigate(`${location.state ? location.state : "/"}`);
+            fetch("http://localhost:3000/users", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(userProfile),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.insertedId) {
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "User Added Successfully",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                }
+              });
           })
           .catch((error) => {
             toast.error(error.message);
@@ -171,10 +197,7 @@ const SignUp = () => {
             </fieldset>
             <p className="font-semibold text-center pt-4">
               Already have an account?<span> </span>
-              <Link
-                className="text-primary"
-                to={"/signIn"}
-              >
+              <Link className="text-primary" to={"/signIn"}>
                 SignIn
               </Link>
             </p>
