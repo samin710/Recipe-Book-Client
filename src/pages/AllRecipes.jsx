@@ -9,7 +9,7 @@ const AllRecipes = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {recipes.map((recipe) => (
           <div
-            key={recipe.id}
+            key={recipe._id}
             className="card bg-base-100 shadow-xl border border-base-300"
           >
             <figure>
