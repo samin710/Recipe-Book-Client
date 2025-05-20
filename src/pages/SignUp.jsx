@@ -11,7 +11,7 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Recipe Book App | SignUp";
+    document.title = "Recipe Book App | signUp";
   }, []);
 
   const from = location.state?.from || "/";
@@ -125,20 +125,20 @@ const SignUp = () => {
               placeholder="Name"
               required
             />
-            <label className="label text-accent">Photo UR</label>
-            <input
-              name="photo"
-              type="text"
-              className="input focus:outline-none w-full focus:border-primary md:mb-2"
-              placeholder="Photo URL"
-              required
-            />
             <label className="label text-accent">Email</label>
             <input
               name="email"
               type="email"
               className="input focus:outline-none w-full focus:border-primary md:mb-2"
               placeholder="Email"
+              required
+            />
+            <label className="label text-accent">Photo UR</label>
+            <input
+              name="photo"
+              type="text"
+              className="input focus:outline-none w-full focus:border-primary md:mb-2"
+              placeholder="Photo URL"
               required
             />
             <label className="label text-accent">Password</label>
@@ -175,7 +175,7 @@ const SignUp = () => {
               Already have an account?<span> </span>
               <Link
                 className="text-primary"
-                to={"/signin"}
+                to={"/signIn"}
                 state={{ from: location.state?.from }}
               >
                 SignIn
