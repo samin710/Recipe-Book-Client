@@ -25,7 +25,7 @@ const AllRecipes = () => {
                 <strong>Cuisine:</strong> {recipe.cuisineType}
               </p>
               <p>
-                <strong>Likes:</strong> {recipe.likes || 0}
+                <strong>Likes:</strong> {recipe.likeCount || 0}
               </p>
               <div className="card-actions justify-end">
                 <Link to={`/recipe/${recipe.id}`}>

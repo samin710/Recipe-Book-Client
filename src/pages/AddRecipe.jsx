@@ -21,10 +21,10 @@ const AddRecipe = () => {
     const formData = new FormData(form);
     const recipeData = Object.fromEntries(formData.entries());
 
-
     const recipeDataWithUserInfo = {
       ...recipeData,
       ...userInfo,
+      likeCount: 0,
     };
 
     fetch("http://localhost:3000/recipes", {

@@ -21,6 +21,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        loader: () => fetch("http://localhost:3000/recipes/top6"),
         Component: Home,
       },
       {
