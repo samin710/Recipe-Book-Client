@@ -23,11 +23,7 @@ const SignUp = () => {
     const name = formData.get("name");
     const photo = formData.get("photo");
 
-    const { email, password, ...rest } = Object.fromEntries(formData.entries());
-    const userProfile = {
-      email,
-      ...rest,
-    };
+    const { email, password } = Object.fromEntries(formData.entries());
 
     const hasUpperCase = /[A-Z]/.test(password);
     const hasLowerCase = /[a-z]/.test(password);
@@ -88,25 +84,6 @@ const SignUp = () => {
             toast.success("Successfully created account");
             setUser({ ...res.user, displayName: name, photoURL: photo });
             navigate(`${location.state ? location.state : "/"}`);
-            fetch("http://localhost:3000/users", {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify(userProfile),
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                if (data.insertedId) {
-                  Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "User Added Successfully",
-                    showConfirmButton: false,
-                    timer: 1500,
-                  });
-                }
-              });
           })
           .catch((error) => {
             toast.error(error.message);
