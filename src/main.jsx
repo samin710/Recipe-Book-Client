@@ -40,7 +40,12 @@ const router = createBrowserRouter([
       },
       {
         path: "myRecipes",
-        Component: MyRecipes,
+        loader: () => fetch("http://localhost:3000/recipes"),
+        element: (
+          <PrivateRoute>
+            <MyRecipes></MyRecipes>
+          </PrivateRoute>
+        ),
       },
       {
         path: "recipeDetails/:id",
