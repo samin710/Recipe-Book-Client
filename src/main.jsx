@@ -13,6 +13,7 @@ import AuthProvider from "./providers/AuthProvider";
 import { ToastContainer } from "react-toastify";
 import ErrorPage from "./pages/ErrorPage";
 import PrivateRoute from "./providers/PrivateRoute";
+import RecipeDetails from "./pages/RecipeDetails";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,16 @@ const router = createBrowserRouter([
       {
         path: "myRecipes",
         Component: MyRecipes,
+      },
+      {
+        path: "recipeDetails/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/recipes/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <RecipeDetails></RecipeDetails>
+          </PrivateRoute>
+        ),
       },
     ],
   },

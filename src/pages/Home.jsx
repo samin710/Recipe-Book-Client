@@ -62,7 +62,7 @@ const Home = () => {
                     <strong>Likes:</strong> {recipe.likeCount || 0}
                   </p>
                   <div className="card-actions justify-end">
-                    <Link to={`/recipe/${recipe.id}`}>
+                    <Link to={`/recipeDetails/${recipe._id}`}>
                       <button className="btn btn-primary btn-sm">
                         See Details
                       </button>
