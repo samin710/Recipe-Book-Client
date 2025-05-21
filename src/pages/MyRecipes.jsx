@@ -3,6 +3,7 @@ import { AuthContext } from "../providers/AuthContext";
 import { useLoaderData } from "react-router";
 import { FaEdit, FaHeart, FaTrash } from "react-icons/fa";
 import Loading from "../components/Loading";
+import Swal from "sweetalert2";
 
 const MyRecipes = () => {
   const { user, loading } = use(AuthContext);
@@ -13,22 +14,39 @@ const MyRecipes = () => {
   if (loading) return <Loading></Loading>;
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:3000/recipes/${id}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(recipes),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.deletedCount) {
-          const remainingRecipes = recipes.filter(
-            (recipe) => recipe._id !== id
-          );
-          setRecipes(remainingRecipes);
-        }
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/recipes/${id}`, {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(recipes),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              const remainingRecipes = recipes.filter(
+                (recipe) => recipe._id !== id
+              );
+              setRecipes(remainingRecipes);
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your recipe has been deleted.",
+                icon: "success",
+              });
+            }
+          });
+      }
+    });
   };
 
   return (
