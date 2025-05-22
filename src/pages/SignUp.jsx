@@ -103,15 +103,15 @@ const SignUp = () => {
         navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
-        // toast.error(error.message);
-        console.log(error.message);
+        toast.error(error.message);
+        // console.log(error.message);
       });
   };
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div
         className="card bg-base-100 md:w-3/9 w-3/4 shrink-0 shadow-2xl"
-        style={{ boxShadow: "0 0 50px rgba(138, 43, 226, 0.7)" }}
+        style={{ boxShadow: "0 0 50px rgba(245, 135, 39, 0.7)" }}
       >
         <p className="font-semibold text-2xl  md:text-3xl text-center py-8">
           <span className="text-primary">SignUp</span> your account
