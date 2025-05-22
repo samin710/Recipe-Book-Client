@@ -11,7 +11,8 @@ const RecipeDetails = () => {
   const [liked, setLiked] = useState(false);
 
   const handleLikeCount = () => {
-    const { likeCount, userEmail } = recipe;
+    const { likeCount, userEmail, likedBy } = recipe;
+
     const { email } = user;
     if (userEmail === email) {
       Swal.fire({
@@ -19,10 +20,20 @@ const RecipeDetails = () => {
         title: "Oops...",
         text: "You cannot like your own recipe",
       });
+      return;
+    }
+    if (likedBy.includes(email)) {
+      Swal.fire({
+        icon: "error",
+        title: "Already liked",
+        text: "You've already liked this recipe",
+      });
+      return;
     } else {
       setLiked(true);
       const updatedLikeCount = {
         likeCount: likeCount + 1,
+        email,
       };
 
       fetch(`http://localhost:3000/recipes/${recipe._id}`, {
@@ -38,9 +49,10 @@ const RecipeDetails = () => {
             setRecipe((prev) => ({
               ...prev,
               likeCount: prev.likeCount + 1,
+              likedBy: [...(prev.likedBy || []), email],
             }));
             Swal.fire({
-              title: "Deleted!",
+              title: "Liked",
               text: `${updatedLikeCount.likeCount} has liked this recipe`,
               icon: "success",
             });

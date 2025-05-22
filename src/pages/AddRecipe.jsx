@@ -25,6 +25,7 @@ const AddRecipe = () => {
       ...recipeData,
       ...userInfo,
       likeCount: 0,
+      likedBy: [""],
     };
 
     fetch("http://localhost:3000/recipes", {
