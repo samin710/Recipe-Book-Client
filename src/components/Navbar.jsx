@@ -12,7 +12,6 @@ const Navbar = () => {
 
   const [theme, setTheme] = useState("light");
   const toggleTheme = () => {
-    console.log("ok");
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
@@ -147,7 +146,7 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   isActive
                     ? "bg-primary text-white font-medium btn"
-                    : "border-b-4 border-b-primary border-secondary  bg-white text-primary font-medium btn"
+                    : "border-b-4 border-b-primary border-secondary bg-secondary text-primary font-medium btn"
                 }
                 to={"/signIn"}
               >

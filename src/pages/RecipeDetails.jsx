@@ -36,13 +36,16 @@ const RecipeDetails = () => {
         email,
       };
 
-      fetch(`http://localhost:3000/recipes/${recipe._id}`, {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(updatedLikeCount),
-      })
+      fetch(
+        `https://recipe-book-app-server-mu.vercel.app/recipes/${recipe._id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(updatedLikeCount),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.modifiedCount) {

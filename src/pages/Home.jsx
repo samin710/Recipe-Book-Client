@@ -3,29 +3,6 @@ import Slider from "../components/Slider";
 import { Link, useLoaderData } from "react-router";
 import { FaHeart } from "react-icons/fa";
 
-const foodImages = [
-  {
-    url: "https://i.ibb.co/Df3SRKR1/Spaghetti-with-Chicken-Cutlet-and-Tomatoes.png",
-    name: "Pizza",
-  },
-  {
-    url: "https://i.ibb.co/ycCf10z1/Mouthwatering-Cheeseburger-on-Ceramic-Plate.png",
-    name: "Burger",
-  },
-  {
-    url: "https://i.ibb.co/JRKG5rst/Penne-Pasta-with-Tomato-Sauce-and-Basil.png",
-    name: "Sushi",
-  },
-  {
-    url: "https://i.ibb.co/dJH5Ympr/Vibrant-Greek-Salad-on-Beige-Countertop.png",
-    name: "Sushi",
-  },
-  {
-    url: "https://i.ibb.co/tpGCKHwW/Stir-Fried-Noodles-with-Vegetables-and-Chicken.png",
-    name: "Sushi",
-  },
-];
-
 const Home = () => {
   useEffect(() => {
     document.title = "Recipe Book App | Home";
@@ -34,7 +11,7 @@ const Home = () => {
   return (
     <>
       <div>
-        <Slider images={foodImages}></Slider>
+        <Slider></Slider>
       </div>
       {/* Top Recipes */}
       <section className="p-6">

@@ -35,7 +35,7 @@ const MyRecipes = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/recipes/${id}`, {
+        fetch(`https://recipe-book-app-server-mu.vercel.app/recipes/${id}`, {
           method: "DELETE",
           headers: {
             "content-type": "application/json",
@@ -66,13 +66,16 @@ const MyRecipes = () => {
     const formData = new FormData(form);
     const updatedRecipeData = Object.fromEntries(formData.entries());
 
-    fetch(`http://localhost:3000/recipes/${selectedRecipe._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updatedRecipeData),
-    })
+    fetch(
+      `https://recipe-book-app-server-mu.vercel.app/recipes/${selectedRecipe._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updatedRecipeData),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
