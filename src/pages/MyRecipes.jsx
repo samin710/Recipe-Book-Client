@@ -76,6 +76,11 @@ const MyRecipes = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
+          setRecipes((prevRecipes) =>
+            prevRecipes.map((r) =>
+              r._id === selectedRecipe._id ? { ...r, ...updatedRecipeData } : r
+            )
+          );
           setSelectedRecipe(null);
           Swal.fire({
             position: "top-end",

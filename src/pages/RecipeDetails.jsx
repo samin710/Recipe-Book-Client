@@ -1,11 +1,53 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useLoaderData } from "react-router";
+import { AuthContext } from "../providers/AuthContext";
+import Swal from "sweetalert2";
 
 const RecipeDetails = () => {
-  const recipe = useLoaderData();
-
+  const { user } = use(AuthContext);
+  const loadedRecipe = useLoaderData();
+  const [recipe, setRecipe] = useState(loadedRecipe);
   const [liked, setLiked] = useState(false);
+
+  const handleLikeCount = () => {
+    const { likeCount, userEmail } = recipe;
+    const { email } = user;
+    if (userEmail === email) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You cannot like your own recipe",
+      });
+    } else {
+      setLiked(true);
+      const updatedLikeCount = {
+        likeCount: likeCount + 1,
+      };
+
+      fetch(`http://localhost:3000/recipes/${recipe._id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updatedLikeCount),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.modifiedCount) {
+            setRecipe((prev) => ({
+              ...prev,
+              likeCount: prev.likeCount + 1,
+            }));
+            Swal.fire({
+              title: "Deleted!",
+              text: `${updatedLikeCount.likeCount} has liked this recipe`,
+              icon: "success",
+            });
+          }
+        });
+    }
+  };
 
   return (
     <div className="max-w-3xl mx-auto mt-8 p-4">
@@ -24,7 +66,9 @@ const RecipeDetails = () => {
 
         <button
           className="text-2xl text-red-500 hover:scale-110 transition"
-          onClick={() => setLiked(!liked)}
+          onClick={() => {
+            handleLikeCount();
+          }}
         >
           {liked ? <FaHeart /> : <FaRegHeart />}
         </button>
