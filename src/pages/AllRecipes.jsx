@@ -20,7 +20,7 @@ const AllRecipes = () => {
         <label className="label text-accent pb-1">Cuisine Type</label>
         <select
           name="cuisineType"
-          className="select focus:outline-none md:w-1/5 focus:border-primary"
+          className="select focus:outline-none md:w-1/5 focus:border-primary duration-1000 ease-in-out transition-colors"
           defaultValue=""
           onChange={handleCuisineChange}
         >
@@ -42,7 +42,7 @@ const AllRecipes = () => {
             {filteredRecipes.map((recipe) => (
               <div
                 key={recipe._id}
-                className="card bg-base-100 shadow-xl border border-base-300"
+                className="card bg-base-100 shadow-xl border border-base-300 duration-1000 ease-in-out transition-colors"
               >
                 <figure>
                   <img

@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import Slider from "../components/Slider";
 import { Link, useLoaderData } from "react-router";
 import { FaHeart } from "react-icons/fa";
+import UserFeedback from "../components/UserFeedback ";
+import FAQ from "../components/FAQ ";
 
 const Home = () => {
   useEffect(() => {
@@ -21,7 +23,7 @@ const Home = () => {
             {recipes.map((recipe) => (
               <div
                 key={recipe._id}
-                className="card bg-base-100 shadow-xl border border-base-300"
+                className="card bg-base-100 shadow-xl border border-base-300 duration-1000 ease-in-out transition-colors"
               >
                 <figure>
                   <img
@@ -57,6 +59,8 @@ const Home = () => {
           </Link>
         </div>
       </section>
+      <UserFeedback></UserFeedback>
+      <FAQ></FAQ>
     </>
   );
 };

@@ -142,13 +142,13 @@ const MyRecipes = () => {
                 <div className="flex gap-2">
                   <button
                     onClick={() => setSelectedRecipe(recipe)}
-                    className="btn btn-sm btn-outline"
+                    className="btn btn-sm btn-outline duration-1000 ease-in-out transition-colors"
                   >
                     <FaEdit />
                   </button>
                   <button
                     onClick={() => handleDelete(recipe._id)}
-                    className="btn btn-sm btn-error text-white"
+                    className="btn btn-sm btn-error text-white duration-1000 ease-in-out transition-colors"
                   >
                     <FaTrash />
                   </button>

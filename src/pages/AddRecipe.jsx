@@ -50,16 +50,16 @@ const AddRecipe = () => {
       });
   };
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-base-100 shadow-md rounded-lg md:my-10 my-5">
+    <div className="max-w-2xl mx-auto p-6 bg-base-100 shadow-md rounded-lg md:my-10 my-5 duration-1000 ease-in-out transition-colors">
       <h2 className="text-2xl font-bold mb-6 text-center">Add New Recipe</h2>
-      <form onSubmit={handleAddRecipe} className="space-y-4">
+      <form onSubmit={handleAddRecipe} className="space-y-4 ">
         <div>
           <label className="label text-accent pb-1">Image URL</label>
           <input
             name="imgUrl"
             type="text"
             placeholder="Enter image URL"
-            className="input focus:outline-none w-full focus:border-primary"
+            className="input focus:outline-none w-full focus:border-primary duration-1000 ease-in-out transition-colors"
           />
         </div>
 
@@ -69,7 +69,7 @@ const AddRecipe = () => {
             name="title"
             type="text"
             placeholder="Enter recipe title"
-            className="input focus:outline-none w-full focus:border-primary"
+            className="input focus:outline-none w-full focus:border-primary duration-1000 ease-in-out transition-colors"
           />
         </div>
 
@@ -78,7 +78,7 @@ const AddRecipe = () => {
           <textarea
             name="ingredients"
             placeholder="List ingredients"
-            className="textarea focus:outline-none w-full focus:border-primary"
+            className="textarea focus:outline-none w-full focus:border-primary duration-1000 ease-in-out transition-colors"
             rows="3"
           ></textarea>
         </div>
@@ -88,7 +88,7 @@ const AddRecipe = () => {
           <textarea
             name="instructions"
             placeholder="Write cooking instructions"
-            className="textarea focus:outline-none w-full focus:border-primary"
+            className="textarea focus:outline-none w-full focus:border-primary duration-1000 ease-in-out transition-colors"
             rows="3"
           ></textarea>
         </div>
@@ -97,7 +97,7 @@ const AddRecipe = () => {
           <label className="label text-accent pb-1">Cuisine Type</label>
           <select
             name="cuisineType"
-            className="select focus:outline-none w-full focus:border-primary"
+            className="select focus:outline-none w-full focus:border-primary duration-1000 ease-in-out transition-colors"
             defaultValue=""
           >
             <option value="" disabled>
@@ -119,13 +119,13 @@ const AddRecipe = () => {
             name="preparationTime"
             type="number"
             placeholder="Enter preparation time"
-            className="input focus:outline-none w-full focus:border-primary"
+            className="input focus:outline-none w-full focus:border-primary duration-1000 ease-in-out transition-colors"
           />
         </div>
 
         <div>
           <label className="label text-accent pb-3">Categories</label>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 duration-1000 ease-in-out transition-colors">
             <label className="label cursor-pointer gap-2">
               <input
                 name="categories"

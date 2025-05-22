@@ -10,13 +10,19 @@ const Navbar = () => {
   const { user, logout, loading } = use(AuthContext);
   const navigate = useNavigate();
 
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") || "light";
+  });
   const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
   };
 
   useEffect(() => {
-    document.querySelector("html").setAttribute("data-theme", theme);
+    const html = document.querySelector("html");
+    html.classList.add("transition-colors", "duration-1000", "ease-in-out");
+    html.setAttribute("data-theme", theme);
   }, [theme]);
 
   if (loading) return <Loading></Loading>;
@@ -34,7 +40,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar bg-base-100 shadow-md shadow-secondary my-3 md:my-8 ">
+      <div className="navbar bg-base-100 shadow-md shadow-secondary my-3 md:my-8 duration-1000 ease-in-out transition-colors">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -67,12 +73,12 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <div className="flex items-center ">
+          <div className="flex items-center gap-2">
             {" "}
             <div className="md:w-15 w-10">
               <img className="rounded-md w-full" src={logImg} alt="" />
             </div>
-            <a className="btn btn-ghost text-xl md:text-2xl">Recipe Book App</a>
+            <a className=" text-xl md:text-2xl">Recipe Book App</a>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex ">
@@ -146,7 +152,7 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   isActive
                     ? "bg-primary text-white font-medium btn"
-                    : "border-b-4 border-b-primary border-secondary bg-secondary text-primary font-medium btn"
+                    : "border-b-4 border-b-primary border-secondary bg-white text-primary font-medium btn"
                 }
                 to={"/signIn"}
               >
@@ -166,7 +172,7 @@ const Navbar = () => {
             </div>
           )}
 
-          <label className="flex cursor-pointer gap-2 ">
+          <label className="flex cursor-pointer gap-2 items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -181,13 +187,14 @@ const Navbar = () => {
               <circle cx="12" cy="12" r="5" />
               <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
             </svg>
+
             <input
               type="checkbox"
               className="toggle"
-              // checked={theme}
-              // onChange={(e) => setTheme(e.target.checked)}
-              onClick={toggleTheme}
+              onChange={toggleTheme}
+              checked={theme === "dark"}
             />
+
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -199,7 +206,7 @@ const Navbar = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
             </svg>
           </label>
         </div>
