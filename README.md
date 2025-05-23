@@ -1,12 +1,20 @@
-# React + Vite
+Website name: Recipe Book App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live site URL: https://recipe-book-app-379ac.web.app/
 
-Currently, two official plugins are available:
+Features:
+🎯 Users can add recipes after logging in.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🎯 Users can like any number of recipes, but:
+      👍 They cannot like the same recipe more than once.
+      👍 They cannot like their own recipes.
 
-## Expanding the ESLint configuration
+🎯 Users can edit and delete their own recipes.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🎯 Users can search for recipes based on a specific cuisine type.
+
+🎯 Users must be logged in to:
+      👍 Add new recipes.
+      👍 View their own recipes.
+
+🎯 A theme toggle button switches the UI between dark and light modes.

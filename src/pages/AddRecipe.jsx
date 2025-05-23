@@ -25,7 +25,7 @@ const AddRecipe = () => {
       ...recipeData,
       ...userInfo,
       likeCount: 0,
-      likedBy: [""],
+      likedBy: [],
     };
 
     fetch("https://recipe-book-app-server-mu.vercel.app/recipes", {

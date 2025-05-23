@@ -150,9 +150,9 @@ const MyRecipes = () => {
                   </button>
                   <button
                     onClick={() => handleDelete(recipe._id)}
-                    className="btn btn-sm btn-error text-white duration-1000 ease-in-out transition-colors"
+                    className="btn btn-sm btn-warning duration-1000 ease-in-out transition-colors"
                   >
-                    <FaTrash className="text-gray-500 hover:text-red-600 transition-colors duration-300" />
+                    <FaTrash className=" hover:text-red-600 transition-colors duration-300" />
                   </button>
                 </div>
               </div>
@@ -164,7 +164,7 @@ const MyRecipes = () => {
       {/* Modal */}
       {selectedRecipe && (
         <div className="fixed inset-0 z-50 backdrop-blur-sm bg-black/30 flex items-center justify-center">
-          <div className="bg-white rounded-lg shadow-lg w-11/12 md:w-8/12 p-6 relative max-h-[90vh] overflow-y-auto">
+          <div className="bg-white dark:bg-base-100 dark:text-accent rounded-lg shadow-lg w-11/12 md:w-8/12 p-6 relative max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setSelectedRecipe(null)}
               className="absolute top-2 right-2 text-gray-600 hover:text-gray-900 font-bold text-xl"

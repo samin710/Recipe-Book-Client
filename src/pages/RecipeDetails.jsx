@@ -62,7 +62,7 @@ const RecipeDetails = () => {
             }));
             Swal.fire({
               title: "Liked",
-              text: `${updatedLikeCount.likeCount} has liked this recipe`,
+              html: `<span><span style="color: #f58727; font-weight: bold;">${updatedLikeCount.likeCount}</span> people interested in this recipe</span>`,
               icon: "success",
             });
           }
@@ -71,7 +71,7 @@ const RecipeDetails = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto mt-8 p-4">
+    <div className="max-w-3xl mx-auto md:mt-8 mb-4 md:mb-6 p-4 shadow-lg shadow-secondary">
       <h1 className="text-4xl font-bold mb-4">{recipe.title}</h1>
 
       <img

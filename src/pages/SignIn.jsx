@@ -91,10 +91,10 @@ const SignIn = () => {
                   onClick={handleGoogleSignIn}
                   className="btn btn-primary btn-outline w-full"
                 >
-                  <FcGoogle size={24} /> Login with Google
+                  <FcGoogle size={24} /> SignIn with Google
                 </p>
                 <p className="btn btn-outline btn-primary w-full">
-                  <FaGithub size={24} className="text-black" /> Login with
+                  <FaGithub size={24} className="text-black" /> SignIn with
                   Github
                 </p>
               </fieldset>

@@ -169,7 +169,7 @@ const SignUp = () => {
                 onClick={handleGoogleSignIn2}
                 className="btn btn-primary btn-outline w-full"
               >
-                <FcGoogle size={24} /> Login with Google
+                <FcGoogle size={24} /> SignIn with Google
               </p>
             </fieldset>
             <p className="font-semibold text-center pt-4">
