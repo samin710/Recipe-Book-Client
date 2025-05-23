@@ -4,6 +4,7 @@ import { Link, useLoaderData } from "react-router";
 import { FaHeart } from "react-icons/fa";
 import UserFeedback from "../components/UserFeedback ";
 import FAQ from "../components/FAQ ";
+import { Typewriter } from "react-simple-typewriter";
 
 const Home = () => {
   useEffect(() => {
@@ -15,8 +16,18 @@ const Home = () => {
       <div className="p-2 text-center">
         <h2 className="text-3xl font-bold text-center">FlavorVerse</h2>
         <p className="pb-3 text-accent">
-          "Explore, Cook, Share – Your Culinary Universe in One App"
+          <span className="text-primary font-bold">Welcome!!!</span>
+          <Typewriter
+            words={[
+              " Explore, Cook, Share – Your Culinary Universe in One App",
+            ]}
+            loop={0}
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
         </p>
+
         <Slider></Slider>
       </div>
       {/* Top Recipes */}
