@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Slider from "../components/Slider";
 import { Link, useLoaderData } from "react-router";
 import { FaHeart } from "react-icons/fa";
 import UserFeedback from "../components/UserFeedback ";
@@ -7,6 +6,8 @@ import FAQ from "../components/FAQ ";
 import { Typewriter } from "react-simple-typewriter";
 import "animate.css";
 import { useInView } from "react-intersection-observer";
+import EmblaCarousel from "../components/Slider/EmblaCarousel";
+import "../components/Slider/embla.css";
 
 const Home = () => {
   useEffect(() => {
@@ -16,12 +17,27 @@ const Home = () => {
 
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.05,
+    threshold: 0.1,
   });
+
+  const OPTIONS = { loop: true };
+  const foodImages = [
+    "https://i.ibb.co/m5yyPk0M/Decadent-Chocolate-Delight-with-Raspberries.png",
+    "https://i.ibb.co/tPm5HB0C/Tomato-Basil-Risotto-Delight.png",
+    "https://i.ibb.co/VYftKCYT/Fresh-Caprese-Salad-with-Basil.png",
+    "https://i.ibb.co/fdym06yj/Butter-Chicken-Curry-with-Basmati-Rice.png",
+    "https://i.ibb.co/ymHf78LT/Savoring-a-Flavorful-Mexican-Tostada.png",
+    "https://i.ibb.co/tpGCKHwW/Stir-Fried-Noodles-with-Vegetables-and-Chicken.png",
+    "https://i.ibb.co/dJH5Ympr/Vibrant-Greek-Salad-on-Beige-Countertop.png",
+    "https://i.ibb.co/JRKG5rst/Penne-Pasta-with-Tomato-Sauce-and-Basil.png",
+    "https://i.ibb.co/ycCf10z1/Mouthwatering-Cheeseburger-on-Ceramic-Plate.png",
+    "https://i.ibb.co/Df3SRKR1/Spaghetti-with-Chicken-Cutlet-and-Tomatoes.png",
+  ];
+
   return (
     <>
-      <div className="p-2 text-center">
-        <h2 className="text-3xl font-bold text-center">FlavorVerse</h2>
+      <div className="text-center">
+        <h2 className="text-3xl font-bold text-center md:pb-3 pb-2 pt-2">FlavorVerse</h2>
         <p className="pb-3 text-accent">
           <span className="text-primary font-bold">Welcome!!!</span>
           <Typewriter
@@ -34,8 +50,9 @@ const Home = () => {
             delaySpeed={1000}
           />
         </p>
-
-        <Slider></Slider>
+        <div className="p-6">
+          <EmblaCarousel slides={foodImages} options={OPTIONS} />
+        </div>
       </div>
       {/* Top Recipes */}
       <section className="p-6" ref={ref}>
