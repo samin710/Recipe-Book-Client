@@ -1,4 +1,5 @@
 import React from "react";
+import { Typewriter } from "react-simple-typewriter";
 
 const FAQ = () => {
   return (
@@ -13,10 +14,17 @@ const FAQ = () => {
             How do I add a recipe?
           </div>
           <div className="collapse-content text-accent">
-            <p>
-              Go to the “Add Recipe” page from the menu and fill in the recipe
-              details, then click submit.
-            </p>
+            <Typewriter
+              words={[
+                "Go to the “Add Recipe” page from the menu and fill in the recipe details, then click submit",
+              ]}
+              loop={0}
+              cursor
+              cursorStyle="|"
+              typeSpeed={90}
+              deleteSpeed={60}
+              delaySpeed={1000}
+            />
           </div>
         </div>
         <div className="collapse collapse-arrow join-item border border-base-300">
@@ -25,10 +33,17 @@ const FAQ = () => {
             Can I edit or delete my recipe later?
           </div>
           <div className="collapse-content text-accent">
-            <p>
-              Absolutely! You can manage your submitted recipes from your
-              profile page—edit or delete them anytime.
-            </p>
+            <Typewriter
+              words={[
+                "Absolutely! You can manage your submitted recipes from your profile page—edit or delete them anytime.",
+              ]}
+              loop={0}
+              cursor
+              cursorStyle="|"
+              typeSpeed={90}
+              deleteSpeed={60}
+              delaySpeed={1000}
+            />
           </div>
         </div>
         <div className="collapse collapse-arrow join-item border border-base-300">
@@ -37,10 +52,17 @@ const FAQ = () => {
             Can I see how many people liked my recipe?
           </div>
           <div className="collapse-content text-accent">
-            <p>
-              Yes, each recipe shows a like count so you can track how popular
-              your dish is among users.
-            </p>
+            <Typewriter
+              words={[
+                "Yes, each recipe shows a like count so you can track how popular your dish is among users.",
+              ]}
+              loop={0}
+              cursor
+              cursorStyle="|"
+              typeSpeed={90}
+              deleteSpeed={60}
+              delaySpeed={1000}
+            />
           </div>
         </div>
         <div className="collapse collapse-arrow join-item border border-base-300">
@@ -49,10 +71,17 @@ const FAQ = () => {
             Can I add a recipe without creating or logging in to the website?
           </div>
           <div className="collapse-content text-accent">
-            <p>
-              No, to ensure recipe authenticity and allow you to manage your
-              content, login is required to add recipes.
-            </p>
+            <Typewriter
+              words={[
+                "No, to ensure recipe authenticity and allow you to manage your content, login is required to add recipes.",
+              ]}
+              loop={0}
+              cursor
+              cursorStyle="|"
+              typeSpeed={90}
+              deleteSpeed={60}
+              delaySpeed={1000}
+            />
           </div>
         </div>
       </div>

@@ -5,12 +5,19 @@ import { FaHeart } from "react-icons/fa";
 import UserFeedback from "../components/UserFeedback ";
 import FAQ from "../components/FAQ ";
 import { Typewriter } from "react-simple-typewriter";
+import "animate.css";
+import { useInView } from "react-intersection-observer";
 
 const Home = () => {
   useEffect(() => {
     document.title = "Recipe Book App | Home";
   }, []);
   const recipes = useLoaderData();
+
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.05,
+  });
   return (
     <>
       <div className="p-2 text-center">
@@ -22,8 +29,8 @@ const Home = () => {
               " Explore, Cook, Share – Your Culinary Universe in One App",
             ]}
             loop={0}
-            typeSpeed={70}
-            deleteSpeed={50}
+            typeSpeed={90}
+            deleteSpeed={60}
             delaySpeed={1000}
           />
         </p>
@@ -31,10 +38,13 @@ const Home = () => {
         <Slider></Slider>
       </div>
       {/* Top Recipes */}
-      <section className="p-6">
+      <section className="p-6" ref={ref}>
         <div className="py-10">
           <h2 className="text-3xl font-bold text-center mb-10">Top Recipes</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
+          <div
+            className={`grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 
+      ${inView ? "animate__animated animate__bounceInRight" : ""}`}
+          >
             {recipes.map((recipe) => (
               <div
                 key={recipe._id}

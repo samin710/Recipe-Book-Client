@@ -1,26 +1,27 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
+import { Typewriter } from "react-simple-typewriter";
 
 const UserFeedback = () => {
   const reviews = [
     {
       name: "Ariana M.",
-      text: "I love how easy it is to find and save recipes! It’s my daily go-to.",
+      text: '"I love how easy it is to find and save recipes! It’s my daily go-to."',
       rating: 5,
     },
     {
       name: "James K.",
-      text: "Clean UI and lots of delicious options. Would love more vegetarian filters!",
+      text: '"Clean UI and lots of delicious options. Would love more vegetarian filters!"',
       rating: 4,
     },
     {
       name: "Sadia R.",
-      text: "Finally an app that helps me organize my recipes in one place.",
+      text: '"Finally an app that helps me organize my recipes in one place."',
       rating: 5,
     },
     {
       name: "Leo D.",
-      text: "Amazing app! The top recipes section keeps me inspired every day.",
+      text: '"Amazing app! The top recipes section keeps me inspired every day."',
       rating: 5,
     },
   ];
@@ -41,7 +42,17 @@ const UserFeedback = () => {
                 <FaStar key={i} />
               ))}
             </div>
-            <p className=" text-sm mb-3">"{review.text}"</p>
+            <p className=" text-sm mb-3">
+              <Typewriter
+                words={[review.text]}
+                loop={0}
+                cursor
+                cursorStyle="|"
+                typeSpeed={90}
+                deleteSpeed={60}
+                delaySpeed={1000}
+              />
+            </p>
             <h4 className="text-md font-semibold text-primary">
               {review.name}
             </h4>
