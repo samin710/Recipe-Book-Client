@@ -2,17 +2,17 @@ import React from "react";
 
 const FAQ = () => {
   return (
-    <section className="mt-20 px-4 max-w-4xl mx-auto">
+    <section className="md:mt-10">
       <h2 className="text-3xl font-bold text-center mb-8">
         Frequently Asked Questions
       </h2>
       <div className="join join-vertical w-full">
         <div className="collapse collapse-arrow join-item border border-base-300">
           <input type="radio" name="faq" defaultChecked />
-          <div className="collapse-title text-lg font-medium">
+          <div className="collapse-title text-lg font-medium text-primary">
             How do I add a recipe?
           </div>
-          <div className="collapse-content">
+          <div className="collapse-content text-accent">
             <p>
               Go to the “Add Recipe” page from the menu and fill in the recipe
               details, then click submit.
@@ -21,25 +21,37 @@ const FAQ = () => {
         </div>
         <div className="collapse collapse-arrow join-item border border-base-300">
           <input type="radio" name="faq" />
-          <div className="collapse-title text-lg font-medium">
-            Can I save recipes for later?
+          <div className="collapse-title text-lg font-medium text-primary">
+            Can I edit or delete my recipe later?
           </div>
-          <div className="collapse-content">
+          <div className="collapse-content text-accent">
             <p>
-              Yes! Click the heart icon to add recipes to your wishlist and view
-              them anytime.
+              Absolutely! You can manage your submitted recipes from your
+              profile page—edit or delete them anytime.
             </p>
           </div>
         </div>
         <div className="collapse collapse-arrow join-item border border-base-300">
           <input type="radio" name="faq" />
-          <div className="collapse-title text-lg font-medium">
-            Are my saved recipes private?
+          <div className="collapse-title text-lg font-medium text-primary">
+            Can I see how many people liked my recipe?
           </div>
-          <div className="collapse-content">
+          <div className="collapse-content text-accent">
             <p>
-              Yes, your wishlist and added recipes are private and only visible
-              to you.
+              Yes, each recipe shows a like count so you can track how popular
+              your dish is among users.
+            </p>
+          </div>
+        </div>
+        <div className="collapse collapse-arrow join-item border border-base-300">
+          <input type="radio" name="faq" />
+          <div className="collapse-title text-lg font-medium text-primary">
+            Can I add a recipe without creating or logging in to the website?
+          </div>
+          <div className="collapse-content text-accent">
+            <p>
+              No, to ensure recipe authenticity and allow you to manage your
+              content, login is required to add recipes.
             </p>
           </div>
         </div>

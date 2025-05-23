@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router";
+import { FaHeart } from "react-icons/fa";
 
 const AllRecipes = () => {
   const recipes = useLoaderData();
@@ -42,13 +43,13 @@ const AllRecipes = () => {
             {filteredRecipes.map((recipe) => (
               <div
                 key={recipe._id}
-                className="card bg-base-100 shadow-xl border border-base-300 duration-1000 ease-in-out transition-colors"
+                className="card bg-base-100 shadow-xl shadow-secondary duration-1000 ease-in-out transition-colors"
               >
                 <figure>
                   <img
                     src={recipe.imgUrl}
                     alt={recipe.title}
-                    className="h-48 w-full object-cover"
+                    className=" w-full object-cover"
                   />
                 </figure>
                 <div className="card-body">
@@ -56,12 +57,15 @@ const AllRecipes = () => {
                   <p>
                     <strong>Cuisine:</strong> {recipe.cuisineType}
                   </p>
-                  <p>
-                    <strong>Likes:</strong> {recipe.likeCount || 0}
+                  <p className="flex items-center gap-2">
+                    <FaHeart className="text-primary text-xl md:text-2xl" />{" "}
+                    <span className="text-lg md:text-xxl">
+                      {recipe.likeCount || 0}
+                    </span>
                   </p>
                   <div className="card-actions justify-end">
                     <Link to={`/recipeDetails/${recipe._id}`}>
-                      <button className="btn btn-primary btn-sm">
+                      <button className="btn btn-primary btn-sm md:btn-md">
                         See Details
                       </button>
                     </Link>

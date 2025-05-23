@@ -3,7 +3,6 @@
 @plugin "daisyui" {
 }
 
-
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
@@ -16,7 +15,7 @@
   default: true;
   --color-primary: #f58727;
   --color-secondary: #fdd9b9;
-  --color-accent: #6f6f6f;
+  --color-accent: #ebded1;
 }
 * {
   font-family: "Lato", sans-serif;

@@ -114,8 +114,8 @@ const Navbar = () => {
                 to={"/"}
                 className={({ isActive }) =>
                   isActive
-                    ? "bg-primary text-white font-medium btn"
-                    : "border-b-4 border-b-primary border-secondary  bg-white text-primary font-medium btn"
+                    ? "bg-primary text-white font-medium btn duration-1000 ease-in-out transition-colors"
+                    : "border-b-4 border-b-primary border-secondary text-primary font-medium btn duration-1000 ease-in-out transition-colors"
                 }
               >
                 Home
@@ -126,8 +126,8 @@ const Navbar = () => {
                 to={"/allRecipes"}
                 className={({ isActive }) =>
                   isActive
-                    ? "bg-primary text-white font-medium btn"
-                    : "border-b-4 border-b-primary border-secondary  bg-white text-primary font-medium btn"
+                    ? "bg-primary text-white font-medium btn duration-1000 ease-in-out transition-colors"
+                    : "border-b-4 border-b-primary border-secondary text-primary font-medium btn duration-1000 ease-in-out transition-colors"
                 }
               >
                 All Recipes
@@ -138,8 +138,8 @@ const Navbar = () => {
                 to={"/addRecipe"}
                 className={({ isActive }) =>
                   isActive
-                    ? "bg-primary text-white font-medium btn"
-                    : "border-b-4 border-b-primary border-secondary  bg-white text-primary font-medium btn"
+                    ? "bg-primary text-white font-medium btn duration-1000 ease-in-out transition-colors"
+                    : "border-b-4 border-b-primary border-secondary text-primary font-medium btn duration-1000 ease-in-out transition-colors"
                 }
               >
                 Add Recipe
@@ -150,8 +150,8 @@ const Navbar = () => {
                 to={"/myRecipes"}
                 className={({ isActive }) =>
                   isActive
-                    ? "bg-primary text-white font-medium btn"
-                    : "border-b-4 border-b-primary border-secondary  bg-white text-primary font-medium btn"
+                    ? "bg-primary text-white font-medium btn duration-1000 ease-in-out transition-colors"
+                    : "border-b-4 border-b-primary border-secondary text-primary font-medium btn duration-1000 ease-in-out transition-colors"
                 }
               >
                 My Recipes
@@ -196,8 +196,8 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   isActive
-                    ? "bg-primary text-white font-medium btn"
-                    : "border-b-4 border-b-primary border-secondary bg-white text-primary font-medium btn"
+                    ? "bg-primary text-white font-medium btn duration-1000 ease-in-out transition-colors"
+                    : "border-b-4 border-b-primary border-secondary text-primary font-medium btn duration-1000 ease-in-out transition-colors"
                 }
                 to={"/signIn"}
               >
@@ -207,8 +207,8 @@ const Navbar = () => {
               <NavLink
                 className={({ isActive }) =>
                   isActive
-                    ? "bg-primary text-white font-medium btn"
-                    : "border-b-4 border-b-primary border-secondary bg-white text-primary font-medium btn"
+                    ? "bg-primary text-white font-medium btn duration-1000 ease-in-out transition-colors"
+                    : "border-b-4 border-b-primary border-secondary text-primary font-medium btn duration-1000 ease-in-out transition-colors"
                 }
                 to={"/signUp"}
               >

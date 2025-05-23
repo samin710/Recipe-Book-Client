@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useLoaderData } from "react-router";
 import { AuthContext } from "../providers/AuthContext";
@@ -10,10 +10,16 @@ const RecipeDetails = () => {
   const [recipe, setRecipe] = useState(loadedRecipe);
   const [liked, setLiked] = useState(false);
 
-  const handleLikeCount = () => {
-    const { likeCount, userEmail, likedBy } = recipe;
+  const { likeCount, userEmail, likedBy } = recipe;
+  const { email } = user;
 
-    const { email } = user;
+  useEffect(() => {
+    if (likedBy.includes(email)) {
+      setLiked(true);
+    }
+  }, [email, likedBy]);
+
+  const handleLikeCount = () => {
     if (userEmail === email) {
       Swal.fire({
         icon: "error",
@@ -75,12 +81,12 @@ const RecipeDetails = () => {
       />
 
       <div className="flex items-center justify-between md:pb-5 pb-3">
-        <p className=" text-gray-700 ">
-          <strong>Posted by:</strong> {recipe.userName}
+        <p className=" text-accent ">
+          <strong className="text-primary">Posted by:</strong> {recipe.userName}
         </p>
 
         <button
-          className="text-2xl text-red-500 hover:scale-110 transition"
+          className="text-2xl text-primary hover:scale-110 transition"
           onClick={() => {
             handleLikeCount();
           }}
@@ -89,22 +95,29 @@ const RecipeDetails = () => {
         </button>
       </div>
 
-      <p className=" text-gray-700">
-        <strong>Category:</strong> {recipe.categories}
-      </p>
-
-      <p className=" text-gray-700">
-        <strong>Ingredients:</strong> {recipe.ingredients}
-      </p>
-      <p className="text-gray-700">
-        <strong>Instructions:</strong> {recipe.instructions}
-      </p>
-      <p className="text-gray-700 ">
-        <strong>Needed time to cook:</strong> {recipe.preparationTime} minutes
-      </p>
-      <p className="text-gray-700 ">
-        <strong>Liked by:</strong> {recipe.likeCount || 0} people
-      </p>
+      <div className="md:space-y-3 space-y-1">
+        {" "}
+        <p className=" text-accent">
+          <strong className="text-primary">Category:</strong>{" "}
+          {recipe.categories}
+        </p>
+        <p className=" text-accent">
+          <strong className="text-primary">Ingredients:</strong>{" "}
+          {recipe.ingredients}
+        </p>
+        <p className="text-accent">
+          <strong className="text-primary">Instructions:</strong>{" "}
+          {recipe.instructions}
+        </p>
+        <p className="text-accent ">
+          <strong className="text-primary">Needed time to cook:</strong>{" "}
+          {recipe.preparationTime} minutes
+        </p>
+        <p className="text-accent ">
+          <strong className="text-primary">Liked by:</strong>{" "}
+          {recipe.likeCount || 0} people
+        </p>
+      </div>
     </div>
   );
 };

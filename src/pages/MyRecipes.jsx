@@ -106,14 +106,14 @@ const MyRecipes = () => {
 
   return (
     <>
-      <div className="max-w-7xl mx-auto p-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className=" py-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {recipes.map((recipe) => (
-          <div key={recipe._id} className="card shadow-xl">
+          <div key={recipe._id} className="card shadow-lg shadow-secondary">
             <figure>
               <img
                 src={recipe.imgUrl}
                 alt={recipe.title}
-                className="h-52 w-full object-cover"
+                className="w-full object-cover"
               />
             </figure>
             <div className="card-body">
@@ -135,10 +135,12 @@ const MyRecipes = () => {
                 <strong>Category:</strong> {recipe.categories}
               </p>
               <div className="flex items-center justify-between mt-3">
-                <span className="flex items-center gap-1 text-primary">
-                  <FaHeart />{" "}
-                  <span className="text-black">{recipe.likeCount || 0}</span>
-                </span>
+                <p className="flex items-center gap-2">
+                  <FaHeart className="text-primary text-xl md:text-2xl" />{" "}
+                  <span className="text-lg md:text-xxl">
+                    {recipe.likeCount || 0}
+                  </span>
+                </p>
                 <div className="flex gap-2">
                   <button
                     onClick={() => setSelectedRecipe(recipe)}
@@ -150,7 +152,7 @@ const MyRecipes = () => {
                     onClick={() => handleDelete(recipe._id)}
                     className="btn btn-sm btn-error text-white duration-1000 ease-in-out transition-colors"
                   >
-                    <FaTrash />
+                    <FaTrash className="text-gray-500 hover:text-red-600 transition-colors duration-300" />
                   </button>
                 </div>
               </div>

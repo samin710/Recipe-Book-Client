@@ -50,7 +50,7 @@ const AddRecipe = () => {
       });
   };
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-base-100 shadow-md rounded-lg md:my-10 my-5 duration-1000 ease-in-out transition-colors">
+    <div className="max-w-2xl mx-auto p-6 bg-base-100 shadow-md rounded-lg md:my-10 my-5 duration-1000 ease-in-out transition-colors shadow-secondary shadow">
       <h2 className="text-2xl font-bold mb-6 text-center">Add New Recipe</h2>
       <form onSubmit={handleAddRecipe} className="space-y-4 ">
         <div>
@@ -78,7 +78,7 @@ const AddRecipe = () => {
           <textarea
             name="ingredients"
             placeholder="List ingredients"
-            className="textarea focus:outline-none w-full focus:border-primary duration-1000 ease-in-out transition-colors"
+            className="textarea focus:outline-none w-full focus:border-primary duration-1000 ease-in-out transition-colors "
             rows="3"
           ></textarea>
         </div>
