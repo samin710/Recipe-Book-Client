@@ -3,17 +3,17 @@ import { Typewriter } from "react-simple-typewriter";
 
 const FAQ = () => {
   return (
-    <section className="md:mt-10">
+    <section className="md:mt-10 ">
       <h2 className="text-3xl font-bold text-center mb-8">
         Frequently Asked Questions
       </h2>
-      <div className="join join-vertical w-full">
-        <div className="collapse collapse-arrow join-item border border-base-300">
+      <div className="join join-vertical w-full rounded-lg">
+        <div className="collapse collapse-arrow join-item border border-secondary rounded-lg mb-2">
           <input type="radio" name="faq" defaultChecked />
           <div className="collapse-title text-lg font-medium text-primary">
             How do I add a recipe?
           </div>
-          <div className="collapse-content text-accent">
+          <div className="collapse-content text-accent rounded-lg">
             <Typewriter
               words={[
                 "Go to the “Add Recipe” page from the menu and fill in the recipe details, then click submit",
@@ -27,7 +27,7 @@ const FAQ = () => {
             />
           </div>
         </div>
-        <div className="collapse collapse-arrow join-item border border-base-300">
+        <div className="collapse collapse-arrow join-item border border-secondary rounded-lg mb-2">
           <input type="radio" name="faq" />
           <div className="collapse-title text-lg font-medium text-primary">
             Can I edit or delete my recipe later?
@@ -46,7 +46,7 @@ const FAQ = () => {
             />
           </div>
         </div>
-        <div className="collapse collapse-arrow join-item border border-base-300">
+        <div className="collapse collapse-arrow join-item border border-secondary rounded-lg mb-2">
           <input type="radio" name="faq" />
           <div className="collapse-title text-lg font-medium text-primary">
             Can I see how many people liked my recipe?
@@ -65,7 +65,7 @@ const FAQ = () => {
             />
           </div>
         </div>
-        <div className="collapse collapse-arrow join-item border border-base-300">
+        <div className="collapse collapse-arrow join-item border border-secondary rounded-lg">
           <input type="radio" name="faq" />
           <div className="collapse-title text-lg font-medium text-primary">
             Can I add a recipe without creating or logging in to the website?

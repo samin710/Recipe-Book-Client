@@ -1,9 +1,13 @@
-import React, { use } from "react";
+import React, { use, useEffect } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../providers/AuthContext";
 import { useNavigate } from "react-router";
 
 const AddRecipe = () => {
+  useEffect(() => {
+    document.title = "Recipe Book App | Add Recipe";
+  }, []);
+
   const navigate = useNavigate();
   const { user } = use(AuthContext);
   const userName = user.displayName;

@@ -1,4 +1,4 @@
-import React, { use, useEffect } from "react";
+import React, { use } from "react";
 import { NavLink, useNavigate } from "react-router";
 import logImg from "../assets/logo.png";
 import { AuthContext } from "../providers/AuthContext";
@@ -7,23 +7,8 @@ import Loading from "./Loading";
 import { useState } from "react";
 
 const Navbar = () => {
-  const { user, logout, loading } = use(AuthContext);
+  const { user, logout, loading, toggleTheme, theme } = use(AuthContext);
   const navigate = useNavigate();
-
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "light";
-  });
-  const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-  };
-
-  useEffect(() => {
-    const html = document.querySelector("html");
-    html.classList.add("transition-colors", "duration-1000", "ease-in-out");
-    html.setAttribute("data-theme", theme);
-  }, [theme]);
 
   const [showDropdown, setShowDropdown] = useState(false);
 

@@ -12,6 +12,21 @@ import {
 import { auth } from "../firebase/firebase.config";
 
 const AuthProvider = ({ children }) => {
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") || "light";
+  });
+  const toggleTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+  };
+
+  useEffect(() => {
+    const html = document.querySelector("html");
+    html.classList.add("transition-colors", "duration-1000", "ease-in-out");
+    html.setAttribute("data-theme", theme);
+  }, [theme]);
+
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -58,6 +73,8 @@ const AuthProvider = ({ children }) => {
     setLoading,
     update,
     logout,
+    toggleTheme,
+    theme,
   };
   return <AuthContext value={authData}>{children}</AuthContext>;
 };

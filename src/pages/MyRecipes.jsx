@@ -6,6 +6,10 @@ import Loading from "../components/Loading";
 import Swal from "sweetalert2";
 
 const MyRecipes = () => {
+  useEffect(() => {
+    document.title = "Recipe Book App | My Recipes";
+  }, []);
+
   const { user, loading } = use(AuthContext);
   const allRecipes = useLoaderData();
   const filteredRecipes = allRecipes.filter((r) => r.userEmail === user.email);

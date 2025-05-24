@@ -10,10 +10,11 @@ const RecipeDetails = () => {
   const [recipe, setRecipe] = useState(loadedRecipe);
   const [liked, setLiked] = useState(false);
 
-  const { likeCount, userEmail, likedBy } = recipe;
+  const { likeCount, userEmail, likedBy, title } = recipe;
   const { email } = user;
 
   useEffect(() => {
+    document.title = `Recipe Book App | ${title}`;
     if (likedBy.includes(email)) {
       setLiked(true);
     }
