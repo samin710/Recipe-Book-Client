@@ -2,7 +2,6 @@ import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthContext";
 import { useLoaderData } from "react-router";
 import { FaEdit, FaHeart, FaTimes, FaTrash } from "react-icons/fa";
-import Loading from "../components/Loading";
 import Swal from "sweetalert2";
 
 const MyRecipes = () => {
@@ -10,12 +9,12 @@ const MyRecipes = () => {
     document.title = "Recipe Book App | My Recipes";
   }, []);
 
-  const { user, loading } = use(AuthContext);
+  const { user } = use(AuthContext);
   const allRecipes = useLoaderData();
   const filteredRecipes = allRecipes.filter((r) => r.userEmail === user.email);
   const [recipes, setRecipes] = useState(filteredRecipes);
 
-  const [selectedRecipe, setSelectedRecipe] = useState(null); // for modal
+  const [selectedRecipe, setSelectedRecipe] = useState(null); 
 
   useEffect(() => {
     if (selectedRecipe) {
@@ -25,8 +24,6 @@ const MyRecipes = () => {
     }
     return () => (document.body.style.overflow = "auto");
   }, [selectedRecipe]);
-
-  if (loading) return <Loading></Loading>;
 
   const handleDelete = (id) => {
     Swal.fire({

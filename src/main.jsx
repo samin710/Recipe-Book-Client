@@ -14,6 +14,7 @@ import { ToastContainer } from "react-toastify";
 import ErrorPage from "./pages/ErrorPage";
 import PrivateRoute from "./providers/PrivateRoute";
 import RecipeDetails from "./pages/RecipeDetails";
+import Loading from "./components/Loading";
 
 const router = createBrowserRouter([
   {
@@ -22,12 +23,14 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        hydrateFallbackElement: <Loading></Loading>,
         loader: () =>
           fetch("https://recipe-book-app-server-mu.vercel.app/recipes/top6"),
         Component: Home,
       },
       {
         path: "allRecipes",
+        hydrateFallbackElement: <Loading></Loading>,
         loader: () =>
           fetch("https://recipe-book-app-server-mu.vercel.app/recipes"),
         Component: AllRecipes,
@@ -42,6 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path: "myRecipes",
+        hydrateFallbackElement: <Loading></Loading>,
         loader: () =>
           fetch("https://recipe-book-app-server-mu.vercel.app/recipes"),
         element: (
@@ -52,6 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: "recipeDetails/:id",
+        hydrateFallbackElement: <Loading></Loading>,
         loader: ({ params }) =>
           fetch(
             `https://recipe-book-app-server-mu.vercel.app/recipes/${params.id}`

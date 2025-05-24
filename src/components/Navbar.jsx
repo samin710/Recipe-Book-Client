@@ -3,16 +3,13 @@ import { NavLink, useNavigate } from "react-router";
 import logImg from "../assets/logo.png";
 import { AuthContext } from "../providers/AuthContext";
 import { toast } from "react-toastify";
-import Loading from "./Loading";
 import { useState } from "react";
 
 const Navbar = () => {
-  const { user, logout, loading, toggleTheme, theme } = use(AuthContext);
+  const { user, logout, toggleTheme, theme } = use(AuthContext);
   const navigate = useNavigate();
 
   const [showDropdown, setShowDropdown] = useState(false);
-
-  if (loading) return <Loading></Loading>;
 
   const handleLogout = () => {
     logout()
