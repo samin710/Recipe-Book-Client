@@ -18,7 +18,7 @@ const RecipeDetails = () => {
     if (likedBy.includes(email)) {
       setLiked(true);
     }
-  }, [email, likedBy]);
+  }, [email, likedBy, title]);
 
   const handleLikeCount = () => {
     if (userEmail === email) {
