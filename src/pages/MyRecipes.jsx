@@ -67,6 +67,8 @@ const MyRecipes = () => {
     const formData = new FormData(form);
     const updatedRecipeData = Object.fromEntries(formData.entries());
 
+    console.log(updatedRecipeData);
+
     fetch(
       `https://recipe-book-app-server-mu.vercel.app/recipes/${selectedRecipe._id}`,
       {
