@@ -9,7 +9,7 @@
 
 ## 🧠 Overview
 
-The **Recipe Book App** is a web application that allows users to create, explore, and manage recipes in a personalized and interactive environment. Authenticated users can add, edit, and delete their own recipes, like recipes from other users (but not their own or the same one twice), and filter recipes by cuisine type. The app features a clean UI with light/dark mode switching for a seamless user experience.
+The ***Recipe Book App*** is a dynamic web application that allows users to share and explore recipes with a range of interactive features. Users can create an account and log in to add, edit, or delete their own recipes, as well as view a personal list of their submissions. The app supports liking functionality, ensuring users can like any number of recipes—except their own or the same recipe more than once. A search feature enables filtering recipes by cuisine type, making discovery easier. Additionally, the interface includes a theme toggle for switching between dark and light modes, offering a personalized user experience.
 
 ---
 
@@ -36,7 +36,6 @@ The **Recipe Book App** is a web application that allows users to create, explor
 - 🔍 Search recipes by cuisine type  
 - 👤 View your personal list of recipes  
 - 🌙 Toggle between dark and light UI themes  
-- 🔐 Authentication with Firebase (Email/Password, Google)
 
 ---
 
@@ -61,3 +60,12 @@ The **Recipe Book App** is a web application that allows users to create, explor
   "sweetalert2": "^11.21.2",
   "tailwindcss": "^4.1.7"
 }
+```
+
+---
+
+## 🛠 How to Run This Project Locally
+1. Clone the repository
+2. Install dependencies: npm install
+3. Create a .env file in the root directory and add your Firebase configuration (replace placeholders)
+4. npm run dev
