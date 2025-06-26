@@ -8,6 +8,7 @@ import "animate.css";
 import { useInView } from "react-intersection-observer";
 import EmblaCarousel from "../components/Slider/EmblaCarousel";
 import "../components/Slider/embla.css";
+import CategorySection from "../components/CategorySection";
 
 const Home = () => {
   const location = useLocation();
@@ -66,16 +67,16 @@ const Home = () => {
             delaySpeed={1000}
           />
         </p>
-        <div className="p-6">
+        <div className="">
           <EmblaCarousel slides={foodImages} options={OPTIONS} />
         </div>
       </div>
       {/* Top Recipes */}
-      <section className="p-6" ref={ref}>
+      <section className="" ref={ref}>
         <div className="py-10">
           <h2 className="text-3xl font-bold text-center mb-10">Top Recipes</h2>
           <div
-            className={`grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 
       ${inView ? "animate__animated animate__bounceInRight" : ""}`}
           >
             {recipes.map((recipe) => (
@@ -123,10 +124,13 @@ const Home = () => {
           </Link>
         </div>
       </section>
-      <div id="faq" className="p-6 scroll-mt-24">
+      <div>
+        <CategorySection></CategorySection>
+      </div>
+      <div id="faq" className=" scroll-mt-24">
         <FAQ></FAQ>
       </div>
-      <div className="p-6">
+      <div className="">
         <UserFeedback></UserFeedback>
       </div>
     </>

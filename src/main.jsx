@@ -17,6 +17,7 @@ import RecipeDetails from "./pages/RecipeDetails";
 import Loading from "./components/Loading";
 import SupportPage from "./pages/SupportPage";
 import AboutUs from "./pages/AboutUs";
+import CategoryRecipes from "./pages/CategoryRecipes";
 
 const router = createBrowserRouter([
   {
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
       {
         path: "aboutUs",
         Component: AboutUs,
+      },
+      {
+        path: "categories",
+        Component: CategoryRecipes,
       },
     ],
   },

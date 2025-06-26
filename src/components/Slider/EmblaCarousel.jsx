@@ -30,11 +30,11 @@ const EmblaCarousel = (props) => {
       <div className="overflow-hidden rounded-lg" ref={emblaRef}>
         <div className="flex -ml-4">
           {slides.map((imgUrl, index) => (
-            <div className="flex-shrink-0 w-[80%] md:w-[45%] pl-4" key={index}>
+            <div className="flex-shrink-0 w-[80%] md:w-[45%] pl-4 " key={index}>
               <img
                 src={imgUrl}
                 alt={`Slide ${index + 1}`}
-                className="w-full object-cover rounded-lg"
+                className="w-full object-contain rounded-lg"
               />
             </div>
           ))}
