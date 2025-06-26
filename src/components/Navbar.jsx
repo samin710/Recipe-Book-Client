@@ -4,12 +4,14 @@ import logImg from "../assets/logo.png";
 import { AuthContext } from "../providers/AuthContext";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import Loading from "./Loading";
 
 const Navbar = () => {
-  const { user, logout, toggleTheme, theme } = use(AuthContext);
+  const { user, logout, toggleTheme, theme, loading } = use(AuthContext);
   const navigate = useNavigate();
-
   const [showDropdown, setShowDropdown] = useState(false);
+
+  if (loading) return <Loading></Loading>;
 
   const handleLogout = () => {
     logout()
@@ -24,7 +26,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar bg-base-100 shadow-md shadow-secondary my-3 md:my-8 duration-1000 ease-in-out transition-colors">
+      <div className="navbar bg-base-100 shadow-md shadow-secondary my-3 md:my-8 duration-1000 ease-in-out transition-colors sticky top-0 z-50">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -61,9 +63,15 @@ const Navbar = () => {
                 <NavLink to={"/myRecipes"}>My Recipes</NavLink>
               </li>
               {user ? (
-                <div className="p-2">
-                  <button onClick={handleLogout}>SignOut</button>
-                </div>
+                <>
+                  {" "}
+                  <li>
+                    <NavLink to={"/dashBoard"}>Dashboard</NavLink>
+                  </li>
+                  <div className="p-2 border border-primary rounded-2xl text-center bg-secondary">
+                    <button onClick={handleLogout}>SignOut</button>
+                  </div>
+                </>
               ) : (
                 <div className="">
                   <li>
@@ -115,28 +123,71 @@ const Navbar = () => {
                 All Recipes
               </NavLink>
             </li>
+
+            {user && (
+              <>
+                {" "}
+                <li>
+                  <NavLink
+                    to={"/addRecipe"}
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-primary text-white font-medium btn duration-1000 ease-in-out transition-colors"
+                        : "border-b-4 border-b-primary border-secondary text-primary font-medium btn duration-1000 ease-in-out transition-colors"
+                    }
+                  >
+                    Add Recipe
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to={"/dashBoard"}
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-primary text-white font-medium btn duration-1000 ease-in-out transition-colors"
+                        : "border-b-4 border-b-primary border-secondary text-primary font-medium btn duration-1000 ease-in-out transition-colors"
+                    }
+                  >
+                    Dashboard
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to={"/myRecipes"}
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-primary text-white font-medium btn duration-1000 ease-in-out transition-colors"
+                        : "border-b-4 border-b-primary border-secondary text-primary font-medium btn duration-1000 ease-in-out transition-colors"
+                    }
+                  >
+                    My Recipes
+                  </NavLink>
+                </li>
+              </>
+            )}
+
             <li>
               <NavLink
-                to={"/addRecipe"}
+                to={"/aboutUs"}
                 className={({ isActive }) =>
                   isActive
                     ? "bg-primary text-white font-medium btn duration-1000 ease-in-out transition-colors"
                     : "border-b-4 border-b-primary border-secondary text-primary font-medium btn duration-1000 ease-in-out transition-colors"
                 }
               >
-                Add Recipe
+                About Us
               </NavLink>
             </li>
             <li>
               <NavLink
-                to={"/myRecipes"}
+                to={"/support"}
                 className={({ isActive }) =>
                   isActive
                     ? "bg-primary text-white font-medium btn duration-1000 ease-in-out transition-colors"
                     : "border-b-4 border-b-primary border-secondary text-primary font-medium btn duration-1000 ease-in-out transition-colors"
                 }
               >
-                My Recipes
+                Support
               </NavLink>
             </li>
           </ul>

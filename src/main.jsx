@@ -15,6 +15,8 @@ import ErrorPage from "./pages/ErrorPage";
 import PrivateRoute from "./providers/PrivateRoute";
 import RecipeDetails from "./pages/RecipeDetails";
 import Loading from "./components/Loading";
+import SupportPage from "./pages/SupportPage";
+import AboutUs from "./pages/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +68,14 @@ const router = createBrowserRouter([
             <RecipeDetails></RecipeDetails>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "support",
+        Component: SupportPage,
+      },
+      {
+        path: "aboutUs",
+        Component: AboutUs,
       },
     ],
   },

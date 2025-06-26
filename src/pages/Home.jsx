@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useLoaderData } from "react-router";
+import { Link, useLoaderData, useLocation, useNavigate } from "react-router";
 import { FaHeart } from "react-icons/fa";
 import UserFeedback from "../components/UserFeedback ";
 import FAQ from "../components/FAQ ";
@@ -10,9 +10,23 @@ import EmblaCarousel from "../components/Slider/EmblaCarousel";
 import "../components/Slider/embla.css";
 
 const Home = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   useEffect(() => {
     document.title = "Recipe Book App | Home";
-  }, []);
+
+    if (location.hash) {
+      const target = document.querySelector(location.hash);
+      if (target) {
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: "smooth" });
+          navigate(location.pathname, { replace: true });
+        }, 100);
+      }
+    }
+  }, [location, navigate]);
+
   const recipes = useLoaderData();
 
   const { ref, inView } = useInView({
@@ -37,7 +51,9 @@ const Home = () => {
   return (
     <>
       <div className="text-center">
-        <h2 className="text-3xl font-bold text-center md:pb-3 pb-2 pt-2">FlavorVerse</h2>
+        <h2 className="text-3xl font-bold text-center md:pb-3 pb-2 pt-2">
+          FlavorVerse
+        </h2>
         <p className="pb-3 text-accent">
           <span className="text-primary font-bold">Welcome!!!</span>
           <Typewriter
@@ -107,7 +123,7 @@ const Home = () => {
           </Link>
         </div>
       </section>
-      <div className="p-6">
+      <div id="faq" className="p-6 scroll-mt-24">
         <FAQ></FAQ>
       </div>
       <div className="p-6">
