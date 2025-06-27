@@ -52,7 +52,7 @@ const Home = () => {
   return (
     <>
       <div className="text-center">
-        <h2 className="text-3xl font-bold text-center md:pb-3 pb-2 pt-2">
+        <h2 className="text-4xl font-bold text-center md:pb-3 pb-2 pt-2 md:mt-8 mt-4">
           FlavorVerse
         </h2>
         <p className="pb-3 text-accent">
@@ -73,8 +73,10 @@ const Home = () => {
       </div>
       {/* Top Recipes */}
       <section className="" ref={ref}>
-        <div className="py-10">
-          <h2 className="text-3xl font-bold text-center mb-10">Top Recipes</h2>
+        <div className="md:mt-8 mt-4">
+          <h2 className="text-4xl font-bold text-center md:mb-10 mb-5">
+            Top Recipes
+          </h2>
           <div
             className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 
       ${inView ? "animate__animated animate__bounceInRight" : ""}`}
@@ -124,7 +126,7 @@ const Home = () => {
           </Link>
         </div>
       </section>
-      <div>
+      <div className="md:mt-8 mt-4">
         <CategorySection></CategorySection>
       </div>
       <div id="faq" className=" scroll-mt-24">

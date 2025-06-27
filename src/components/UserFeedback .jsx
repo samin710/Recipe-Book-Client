@@ -27,8 +27,8 @@ const UserFeedback = () => {
   ];
 
   return (
-    <section className="md:mt-10 ">
-      <h2 className="text-3xl font-bold text-center mb-6">
+    <section className="md:mt-8 mt-4 ">
+      <h2 className="text-4xl font-bold text-center md:mb-10 mb-5 ">
         What Our Users Say
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

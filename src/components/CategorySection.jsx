@@ -20,8 +20,8 @@ const CategorySection = () => {
     },
   ];
   return (
-    <div className="py-12">
-      <h2 className="text-3xl font-bold mb-8 text-center">
+    <div className="">
+      <h2 className="text-4xl font-bold md:mb-10 mb-5 text-center">
         Browse by Category
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -49,7 +49,7 @@ const AddRecipe = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-          navigate("/allRecipes");
+          navigate("/dashBoard/dashboardAllRecipes");
         }
       });
   };

@@ -1,155 +1,128 @@
 import React, { use } from "react";
-import { NavLink, Outlet } from "react-router";
+import { Link, NavLink, Outlet } from "react-router";
 import logImg from "../assets/logo.png";
 import { AuthContext } from "../providers/AuthContext";
 import { toast } from "react-toastify";
 
 const DashboardLayout = () => {
   const { logout } = use(AuthContext);
+
   const handleLogout = () => {
     logout()
       .then(() => {
-        toast.success("Successfully SignOut");
+        toast.success("Successfully signed out");
       })
       .catch((error) => {
-        console.log(error.massage);
+        console.error(error.message);
       });
   };
+
+  // Shared navlink styles
+  const navLinkClass = ({ isActive }) =>
+    `btn text-left justify-start font-medium w-full transition-all duration-300 ${
+      isActive
+        ? "bg-primary text-white"
+        : "text-primary border-l-4 border-transparent hover:border-primary hover:bg-base-300"
+    }`;
 
   return (
     <div className="drawer lg:drawer-open max-w-11/12 md:max-w-10/11 mx-auto">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col">
-        {/* Navbar */}
-        <div className="navbar bg-base-300 w-full lg:hidden">
-          <div className="flex-none ">
-            <label
-              htmlFor="my-drawer-2"
-              aria-label="open sidebar"
-              className="btn btn-square btn-ghost"
-            >
+
+      {/* Content Area */}
+      <div className="drawer-content flex flex-col min-h-screen">
+        {/* Mobile Navbar */}
+        <div className="navbar bg-base-300 shadow-md lg:hidden px-4">
+          <div className="flex-none">
+            <label htmlFor="my-drawer-2" className="btn btn-square btn-ghost">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
-                className="inline-block h-6 w-6 stroke-current"
+                stroke="currentColor"
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M4 6h16M4 12h16M4 18h16"
-                ></path>
+                />
               </svg>
             </label>
           </div>
-          <div className="mx-2 flex-1 px-2 lg:hidden">Dashboard</div>
+          <div className="text-xl font-semibold ml-4">Dashboard</div>
         </div>
-        {/* Page content here */}
-        <Outlet></Outlet>
-        {/* Page content here */}
+
+        {/* Main Content */}
+        <main className="p-4 flex-grow">
+          <Outlet />
+        </main>
       </div>
-      <div className="drawer-side">
-        <label
-          htmlFor="my-drawer-2"
-          aria-label="close sidebar"
-          className="drawer-overlay"
-        ></label>
-        <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-          {/* Sidebar content here */}
-          <div className="flex items-center gap-2">
-            <div className="md:w-12 w-10">
-              <img
-                src={logImg}
-                alt="Logo"
-                className="w-full rounded-md mx-auto mb-2"
-              />
+
+      {/* Sidebar */}
+      <div className="drawer-side z-40">
+        <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+        <aside className="menu bg-secondary p-4 text-base-content min-h-full space-y-4 shadow-md ">
+          {/* Logo & Title */}
+          <Link to={"/dashBoard"}>
+            {" "}
+            <div className="flex items-center justify-center gap-3 mb-4 border border-primary md:p-4 p-2 rounded-2xl">
+              <img src={logImg} alt="Logo" className="w-12 h-12 rounded-md" />
+              <span className="text-2xl font-bold hidden md:inline-block">
+                Recipe Book App
+              </span>
             </div>
-            <a className="hidden md:block text-xl md:text-2xl">
-              Recipe Book App
-            </a>
-          </div>
-          <li>
-            <NavLink
-              to={"/"}
-              className={({ isActive }) =>
-                isActive
-                  ? "bg-primary text-white font-medium btn duration-1000 ease-in-out transition-colors"
-                  : "border-b-4 border-b-primary border-secondary text-primary font-medium btn duration-1000 ease-in-out transition-colors"
-              }
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"/dashBoard/dashboardAllRecipes"}
-              className={({ isActive }) =>
-                isActive
-                  ? "bg-primary text-white font-medium btn duration-1000 ease-in-out transition-colors"
-                  : "border-b-4 border-b-primary border-secondary text-primary font-medium btn duration-1000 ease-in-out transition-colors"
-              }
-            >
-              All Recipes
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"/dashBoard/addRecipe"}
-              className={({ isActive }) =>
-                isActive
-                  ? "bg-primary text-white font-medium btn duration-1000 ease-in-out transition-colors"
-                  : "border-b-4 border-b-primary border-secondary text-primary font-medium btn duration-1000 ease-in-out transition-colors"
-              }
-            >
-              Add Recipe
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"/dashBoard/dashboardMyRecipes"}
-              className={({ isActive }) =>
-                isActive
-                  ? "bg-primary text-white font-medium btn duration-1000 ease-in-out transition-colors"
-                  : "border-b-4 border-b-primary border-secondary text-primary font-medium btn duration-1000 ease-in-out transition-colors"
-              }
-            >
-              My Recipes
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"/dashBoard/aboutUs"}
-              className={({ isActive }) =>
-                isActive
-                  ? "bg-primary text-white font-medium btn duration-1000 ease-in-out transition-colors"
-                  : "border-b-4 border-b-primary border-secondary text-primary font-medium btn duration-1000 ease-in-out transition-colors"
-              }
-            >
-              About Us
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"/dashBoard/support"}
-              className={({ isActive }) =>
-                isActive
-                  ? "bg-primary text-white font-medium btn duration-1000 ease-in-out transition-colors"
-                  : "border-b-4 border-b-primary border-secondary text-primary font-medium btn duration-1000 ease-in-out transition-colors"
-              }
-            >
-              Support
-            </NavLink>
-          </li>
+          </Link>
+
+          {/* Navigation Links */}
+          <ul className="space-y-2">
+            <li>
+              <NavLink to="/" className={navLinkClass}>
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/dashBoard/dashboardAllRecipes"
+                className={navLinkClass}
+              >
+                All Recipes
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/dashBoard/addRecipe" className={navLinkClass}>
+                Add Recipe
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/dashBoard/dashboardMyRecipes"
+                className={navLinkClass}
+              >
+                My Recipes
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/dashBoard/aboutUs" className={navLinkClass}>
+                About Us
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/dashBoard/support" className={navLinkClass}>
+                Support
+              </NavLink>
+            </li>
+          </ul>
+
+          {/* Logout Button */}
           <button
-            onClick={() => {
-              handleLogout();
-            }}
-            className="w-full border-primary text-black border rounded-md px-4 py-2 text-sm hover:bg-primary cursor-pointer text-center"
+            onClick={handleLogout}
+            className="btn btn-outline w-full mt-6 hover:bg-primary hover:text-white transition"
           >
             Logout
           </button>
-        </ul>
+        </aside>
       </div>
     </div>
   );

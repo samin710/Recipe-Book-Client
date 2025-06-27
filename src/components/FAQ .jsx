@@ -3,8 +3,8 @@ import { Typewriter } from "react-simple-typewriter";
 
 const FAQ = () => {
   return (
-    <section className="md:mt-10 ">
-      <h2 className="text-3xl font-bold text-center mb-8">
+    <section className="md:mt-8 mt-4 ">
+      <h2 className="text-4xl font-bold text-center md:mb-10 mb-5 ">
         Frequently Asked Questions
       </h2>
       <div className="join join-vertical w-full rounded-lg">
