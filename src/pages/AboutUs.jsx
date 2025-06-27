@@ -9,7 +9,7 @@ const AboutUs = () => {
   });
 
   useEffect(() => {
-    // Replace this with your actual API or database call
+    document.title = "Recipe Book App | About Us";
     fetch("https://recipe-book-app-server-mu.vercel.app/recipes")
       .then((res) => res.json())
       .then((data) => {

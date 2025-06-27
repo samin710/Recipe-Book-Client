@@ -32,8 +32,8 @@ const DashboardLayout = () => {
       {/* Content Area */}
       <div className="drawer-content flex flex-col min-h-screen">
         {/* Mobile Navbar */}
-        <div className="navbar bg-base-300 shadow-md lg:hidden px-4">
-          <div className="flex-none">
+        <div className="navbar shadow-lg shadow-secondary lg:hidden px-4 sticky top-0 items-center mt-3">
+          <div className="flex-none ">
             <label htmlFor="my-drawer-2" className="btn btn-square btn-ghost">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -51,6 +51,7 @@ const DashboardLayout = () => {
               </svg>
             </label>
           </div>
+          <img src={logImg} alt="Logo" className="w-12 h-12 rounded-md" />
           <div className="text-xl font-semibold ml-4">Dashboard</div>
         </div>
 
@@ -77,6 +78,11 @@ const DashboardLayout = () => {
 
           {/* Navigation Links */}
           <ul className="space-y-2">
+            <li>
+              <NavLink to="/dashBoard" end className={navLinkClass}>
+                Dashboard
+              </NavLink>
+            </li>
             <li>
               <NavLink to="/" className={navLinkClass}>
                 Home
@@ -118,7 +124,7 @@ const DashboardLayout = () => {
           {/* Logout Button */}
           <button
             onClick={handleLogout}
-            className="btn btn-outline w-full mt-6 hover:bg-primary hover:text-white transition"
+            className="btn btn-outline btn-primary w-full mt-6 hover:bg-primary hover:text-white transition"
           >
             Logout
           </button>

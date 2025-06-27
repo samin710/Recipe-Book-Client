@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router";
 
 const DashboardAllRecipes = () => {
   const recipes = useLoaderData();
+
+  useEffect(() => {
+    document.title = "Recipe Book App | All Recipes";
+  }, []);
 
   const [selectedCuisine, setSelectedCuisine] = useState("");
   const [searchText, setSearchText] = useState("");

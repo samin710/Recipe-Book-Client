@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const SupportPage = () => {
+  useEffect(() => {
+    document.title = "Recipe Book App | Support";
+  }, []);
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
       <h1 className="text-3xl font-bold mb-6 text-center">Need Help?</h1>

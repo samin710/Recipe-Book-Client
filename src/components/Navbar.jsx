@@ -26,7 +26,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar bg-base-100 shadow-md shadow-secondary my-3 md:my-8 duration-1000 ease-in-out transition-colors sticky top-0 z-50 md:mt-8 mt-4">
+      <div className="navbar bg-base-100 shadow-lg shadow-secondary my-3 md:my-8 duration-1000 ease-in-out transition-colors sticky top-0 z-50 md:mt-8 mt-4">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -56,19 +56,13 @@ const Navbar = () => {
               <li>
                 <NavLink to={"/allRecipes"}>All Recipes</NavLink>
               </li>
-              <li>
-                <NavLink to={"/addRecipe"}>Add Recipe</NavLink>
-              </li>
-              <li>
-                <NavLink to={"/myRecipes"}>My Recipes</NavLink>
-              </li>
               {user ? (
                 <>
                   {" "}
                   <li>
                     <NavLink to={"/dashBoard"}>Dashboard</NavLink>
                   </li>
-                  <div className="p-2 border border-primary rounded-2xl text-center bg-secondary">
+                  <div className="p-2 border border-primary rounded-2xl text-center bg-secondary mt-3">
                     <button onClick={handleLogout}>SignOut</button>
                   </div>
                 </>

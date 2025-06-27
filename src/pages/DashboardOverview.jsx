@@ -1,12 +1,25 @@
 import { use, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthContext";
 import { motion } from "framer-motion";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  ResponsiveContainer,
+} from "recharts";
 
 const DashboardOverview = () => {
   const { user } = use(AuthContext);
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
+    document.title = "Recipe Book App | Dashboard";
     fetch("https://recipe-book-app-server-mu.vercel.app/recipes")
       .then((res) => res.json())
       .then((data) => setRecipes(data));
@@ -17,6 +30,23 @@ const DashboardOverview = () => {
     (total, recipe) => total + (recipe.likeCount || 0),
     0
   );
+
+  const cuisineCount = myRecipes.reduce((acc, recipe) => {
+    acc[recipe.cuisineType] = (acc[recipe.cuisineType] || 0) + 1;
+    return acc;
+  }, {});
+
+  const cuisineData = Object.entries(cuisineCount).map(([type, count]) => ({
+    name: type,
+    value: count,
+  }));
+
+  const likeChartData = myRecipes.map((r) => ({
+    name: r.title.length > 20 ? r.title.slice(0, 8) + "..." : r.title,
+    likes: r.likeCount || 0,
+  }));
+
+  const COLORS = ["#00C49F", "#FFBB28", "#FF8042", "#8884d8", "#82ca9d"];
 
   return (
     <div className="p-6">
@@ -43,7 +73,7 @@ const DashboardOverview = () => {
       </motion.div>
 
       {/* Stat Boxes */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
         <StatCard
           title="Total Recipes"
           value={recipes.length}
@@ -62,6 +92,50 @@ const DashboardOverview = () => {
           border="accent"
           delay={0.3}
         />
+      </div>
+
+      {/* Charts */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        {/* Pie Chart */}
+        <div className="bg-base-200 p-6 rounded-xl shadow">
+          <h3 className="text-lg font-bold mb-4">My Recipes by Cuisine Type</h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <PieChart>
+              <Pie
+                data={cuisineData}
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="50%"
+                outerRadius={100}
+                fill="#8884d8"
+                label={({ name, value }) => `${name}: ${value}`}
+              >
+                {cuisineData.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
+
+        {/* Bar Chart */}
+        <div className="bg-base-200 p-6 rounded-xl shadow">
+          <h3 className="text-lg font-bold mb-4">Like Count per Recipe</h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={likeChartData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="likes" fill="#00C49F" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     </div>
   );
