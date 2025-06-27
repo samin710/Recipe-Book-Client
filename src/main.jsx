@@ -18,6 +18,10 @@ import Loading from "./components/Loading";
 import SupportPage from "./pages/SupportPage";
 import AboutUs from "./pages/AboutUs";
 import CategoryRecipes from "./pages/CategoryRecipes";
+import DashboardLayout from "./layouts/DashboardLayout";
+import DashboardOverview from "./pages/DashboardOverview";
+import DashboardAllRecipes from "./pages/DashboardAllRecipes";
+import DashboardMyRecipes from "./pages/DashboardMyRecipes";
 
 const router = createBrowserRouter([
   {
@@ -38,25 +42,7 @@ const router = createBrowserRouter([
           fetch("https://recipe-book-app-server-mu.vercel.app/recipes"),
         Component: AllRecipes,
       },
-      {
-        path: "addRecipe",
-        element: (
-          <PrivateRoute>
-            <AddRecipe></AddRecipe>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "myRecipes",
-        hydrateFallbackElement: <Loading></Loading>,
-        loader: () =>
-          fetch("https://recipe-book-app-server-mu.vercel.app/recipes"),
-        element: (
-          <PrivateRoute>
-            <MyRecipes></MyRecipes>
-          </PrivateRoute>
-        ),
-      },
+
       {
         path: "recipeDetails/:id",
         hydrateFallbackElement: <Loading></Loading>,
@@ -91,6 +77,67 @@ const router = createBrowserRouter([
   {
     path: "signIn",
     Component: SignIn,
+  },
+  {
+    path: "dashBoard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+        Component: DashboardOverview,
+      },
+      {
+        path: "dashboardMyRecipes",
+        hydrateFallbackElement: <Loading></Loading>,
+        loader: () =>
+          fetch("https://recipe-book-app-server-mu.vercel.app/recipes"),
+        element: (
+          <PrivateRoute>
+            <DashboardMyRecipes></DashboardMyRecipes>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "addRecipe",
+        element: (
+          <PrivateRoute>
+            <AddRecipe></AddRecipe>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "dashboardAllRecipes",
+        hydrateFallbackElement: <Loading></Loading>,
+        loader: () =>
+          fetch("https://recipe-book-app-server-mu.vercel.app/recipes"),
+        Component: DashboardAllRecipes,
+      },
+      {
+        path: "recipeDetails/:id",
+        hydrateFallbackElement: <Loading></Loading>,
+        loader: ({ params }) =>
+          fetch(
+            `https://recipe-book-app-server-mu.vercel.app/recipes/${params.id}`
+          ),
+        element: (
+          <PrivateRoute>
+            <RecipeDetails></RecipeDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "support",
+        Component: SupportPage,
+      },
+      {
+        path: "aboutUs",
+        Component: AboutUs,
+      },
+    ],
   },
   {
     path: "*",

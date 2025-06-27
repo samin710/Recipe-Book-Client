@@ -129,18 +129,6 @@ const Navbar = () => {
                 {" "}
                 <li>
                   <NavLink
-                    to={"/addRecipe"}
-                    className={({ isActive }) =>
-                      isActive
-                        ? "bg-primary text-white font-medium btn duration-1000 ease-in-out transition-colors"
-                        : "border-b-4 border-b-primary border-secondary text-primary font-medium btn duration-1000 ease-in-out transition-colors"
-                    }
-                  >
-                    Add Recipe
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
                     to={"/dashBoard"}
                     className={({ isActive }) =>
                       isActive
@@ -149,18 +137,6 @@ const Navbar = () => {
                     }
                   >
                     Dashboard
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to={"/myRecipes"}
-                    className={({ isActive }) =>
-                      isActive
-                        ? "bg-primary text-white font-medium btn duration-1000 ease-in-out transition-colors"
-                        : "border-b-4 border-b-primary border-secondary text-primary font-medium btn duration-1000 ease-in-out transition-colors"
-                    }
-                  >
-                    My Recipes
                   </NavLink>
                 </li>
               </>
