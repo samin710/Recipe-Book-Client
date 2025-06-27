@@ -7,6 +7,11 @@
 
 ---
 
+## 🖇️ Server Link 
+👉 [Server Link](https://github.com/samin710/Recipe-Book-Server)
+
+---
+
 ## 🧠 Overview
 
 The ***Recipe Book App*** is a dynamic web application that allows users to share and explore recipes with a range of interactive features. Users can create an account and log in to add, edit, or delete their own recipes, as well as view a personal list of their submissions. The app supports liking functionality, ensuring users can like any number of recipes—except their own or the same recipe more than once. A search feature enables filtering recipes by cuisine type, making discovery easier. Additionally, the interface includes a theme toggle for switching between dark and light modes, offering a personalized user experience.
